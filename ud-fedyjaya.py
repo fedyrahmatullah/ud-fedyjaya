@@ -5,7 +5,7 @@ clear = lambda: os.system('cls')
 def main():
     clear()
     print("UD.FEDY JAYA")
-    Print("Toko Sparepart Sepeda Motor")
+    print("Toko Sparepart Sepeda Motor")
     print("---------------------------")
     print()
     print("Apa yang bisa saya bantu?")
@@ -185,7 +185,7 @@ def hapusBarangToko():
     else:
         main()
 
-def tambahBarangKeFile(barangUser: dict, clear: bool):
+def tambahBarangKeFile(barangUser: dict, clear: bool): #mendefinisikan tambah barang ke file
     if clear:
         f = open('dbarang-udfedyjaya.txt', 'w')
         f.close()
@@ -202,7 +202,27 @@ def tambahBarangKeFile(barangUser: dict, clear: bool):
         for barang in barangToko:
             file.write(f"{barang}: {barangToko[barang]}")
             file.write('\n')
+        
+def getbarangToko():
+    barangToko = {}
+    with open('dbarang-udfedyjaya.txt', 'r') as file:
+        for line in file:
+            line: line.replace('\n', '').split(':')
+            namaBarang, jumlahBarang = line[0], line[1].strip()
+            barangToko.update({namaBarang: int(jumlahBarang)})
           
+    return
+
+def keMenu(pesan):
+    while True:
+        print()
+        kembali = input(f"{pesan}. Tekan (M) untuk kembali ke Menu: ").lower() if pesan != None else input("Tekan (M) untuk kembali ke Menu: ").lower()
+        if kembali == 'm':
+            main()
+            break
+        
+main()
+
     
     
     
