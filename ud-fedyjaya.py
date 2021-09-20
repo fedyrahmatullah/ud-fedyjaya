@@ -1,4 +1,5 @@
 import os
+from sys import path
 clear = lambda: os.system('cls')
 
 def main():
@@ -140,6 +141,74 @@ def editBarangToko():
         
         tambahBarangKeFile(barangToko, clear=True)
         keMenu("Nama barang telah diubah")
+        
+    elif opsiUser == '2':
+        print()
+        while True:
+            barangDiedit = input("Masukkan Nama Barang yang akan diedit: ")
+            if barangDiedit in barangToko:
+                break
+            else:
+                print("Barang Tidak Ada")
+                print()
+                
+        while True:
+            newJumlahBarang = input("Masukkan Jumlah Baru untuk Barang: ")
+            if newJumlahBarang != '':
+                break
+            barangToko.update({barangDiedit: newJumlahBarang})
+            tambahBarangKeFile(barangToko, clear=True)
+            keMenu("Jumlah barang telah diubah")
+            
+def hapusBarangToko():
+    print("UD.FEDY JAYA")
+    print("Hapus Barang Toko")
+    print("-----------------")
+    print()
+    barangToko = getbarangToko()
+    while True:
+        barangDihapus = input("Masukkan Nama Barang yang akan dihapus: ")
+        if barangDihapus in barangToko:
+            break
+        else:
+            print("Barang Tidak Ada")
+            print()
+            
+    while True:
+        konfirmasi = input("KONFIRMASI: Apakah Anda Yakin Ingin Menghapus Barang ini?(y/n): ").lower()
+        if konfirmasi in ['y', 'n']:
+            break
+    if konfirmasi == 'y':
+        del barangToko[barangDihapus]
+        tambahBarangKeFile(barangToko, clear=True)
+        keMenu("Barang telah dihapus")
+    else:
+        main()
+
+def tambahBarangKeFile(barangUser: dict, clear: bool):
+    if clear:
+        f = open('dbarang-udfedyjaya.txt', 'w')
+        f.close()
+        with open('dbarang-udfedyjaya.txt', 'a') as file:
+            for barang in barangUser:
+                file.write(f"{barang}: {barangUser[barang]}")
+                file.write('\n')
+        return
+    barangToko = getbarangToko()
+    for barang in barangUser:
+        if barang in barangToko: #mengecek barang apakah sudah ditambahkan
+            barangToko[barang] += barangUser[barang]
+    with open('dbarang-udfedyjaya.txt', 'a') as file:
+        for barang in barangToko:
+            file.write(f"{barang}: {barangToko[barang]}")
+            file.write('\n')
+          
+    
+    
+    
+        
+        
+                        
         
             
     
