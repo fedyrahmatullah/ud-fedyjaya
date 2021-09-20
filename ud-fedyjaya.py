@@ -14,7 +14,7 @@ def main():
     print("2 - Melihat Daftar Barang")
     print()
     while True:
-        opsiUser == input("Tentukan Pilihan Anda: ")
+        opsiUser = input("Tentukan Pilihan Anda: ")
         if opsiUser == '1':
             tambahBarang()
             break
