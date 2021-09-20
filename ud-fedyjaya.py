@@ -32,10 +32,11 @@ def tambahBarang():
     print()
     print("1 - Tambahkan lebih dari satu barang")
     print("2 - Tambahkan satu Barang")
+    print("3 - Kembali")
     print()
     while True:
         opsiUser = input("Tentukan Pilihan Anda: ")
-        if opsiUser in ['1', '2']:
+        if opsiUser in ['1', '2', '3']:
             break
     if opsiUser == '1':
         print()
@@ -72,6 +73,11 @@ def tambahBarang():
                 break
         tambahBarangKeFile({barangToko: int(jml_Barang)}, clear=False)
         keMenu("Barang telah ditambahkan")
+    elif opsiUser == '3':
+        print()
+        while True:
+            main()
+            break
 
 def lihatBarang():
     clear()
@@ -92,6 +98,7 @@ def lihatBarang():
     print()
     print("1- Edit Barang")
     print("2 - Hapus Barang")
+    print("3 - Kembali")
     print()
     while True:
         opsiUser = input("Tentukan Pilihan Anda: ")
@@ -100,6 +107,9 @@ def lihatBarang():
             break
         elif opsiUser == '2':
             hapusBarangToko()
+            break
+        elif opsiUser == '3':
+            main()
             break
 
 def editBarangToko():
