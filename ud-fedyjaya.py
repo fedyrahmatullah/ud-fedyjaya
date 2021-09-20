@@ -56,9 +56,10 @@ def tambahBarang():
                 if jml_Barang.isdigit():
                     break
             barangUser.update({barangToko: int(jml_Barang)})
-                        
-        tambahBarangKeFile(barangUser, clear=False)
-        keMenu("Barang telah ditambahkan")
+            tambahBarangKeFile(barangUser, clear=False)
+            keMenu("Barang telah ditambahkan")
+                           
+        
                 
     elif opsiUser == '2':
         print()
@@ -70,8 +71,9 @@ def tambahBarang():
             jml_Barang = input("Jumlah Barang: ")
             if jml_Barang.isdigit():
                 break
-        tambahBarangKeFile({barangToko: int(jml_Barang)}, clear=False)
-        keMenu("Barang telah ditambahkan")
+        
+    tambahBarangKeFile({barangToko: int(jml_Barang)}, clear=False)
+    keMenu("Barang telah ditambahkan")
         
 def lihatBarang():
     clear()
@@ -219,8 +221,8 @@ def keMenu(pesan):
         kembali = input(f"{pesan}. Tekan (M) untuk kembali ke Menu: ").lower() if pesan != None else input("Tekan (M) untuk kembali ke Menu: ").lower()
         if kembali == 'm':
             main()
-            break
-        
+            break       
+
 main()
 
     
