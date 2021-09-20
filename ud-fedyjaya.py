@@ -21,7 +21,7 @@ def main():
         elif opsiUser == '2':
             lihatBarang()
             break
-    
+
 def tambahBarang():
     clear()
     print("UD.FEDY JAYA")
@@ -56,11 +56,10 @@ def tambahBarang():
                 if jml_Barang.isdigit():
                     break
             barangUser.update({barangToko: int(jml_Barang)})
-            tambahBarangKeFile(barangUser, clear=False)
-            keMenu("Barang telah ditambahkan")
-                           
-        
-                
+
+        tambahBarangKeFile(barangUser, clear=False)
+        keMenu("Barang telah ditambahkan")
+
     elif opsiUser == '2':
         print()
         while True:
@@ -71,10 +70,9 @@ def tambahBarang():
             jml_Barang = input("Jumlah Barang: ")
             if jml_Barang.isdigit():
                 break
-        
-    tambahBarangKeFile({barangToko: int(jml_Barang)}, clear=False)
-    keMenu("Barang telah ditambahkan")
-        
+        tambahBarangKeFile({barangToko: int(jml_Barang)}, clear=False)
+        keMenu("Barang telah ditambahkan")
+
 def lihatBarang():
     clear()
     print("UD.FEDY JAYA")
@@ -87,7 +85,7 @@ def lihatBarang():
     print()
     for barang in barangToko:
         print(f"{barang}: {barangToko[barang]}")
-        
+
     print()
     print("UD.FEDY JAYA")
     print("Opsi yang tersedia: ")
@@ -122,7 +120,7 @@ def editBarangToko():
             break
     if opsiUser == 'k':
         main()
-        
+
     barangToko = getbarangToko()
     if opsiUser == '1':
         print()
@@ -133,17 +131,17 @@ def editBarangToko():
             else:
                 print("Barang Tidak Ada")
                 print()
-        
+
         while True:
             newNamaBarang = input("Masukkan Nama Baru untuk Barang: ")
             if newNamaBarang != '':
                 break
         barangToko.update({newNamaBarang: barangToko[barangDiedit]})
         del barangToko[barangDiedit]
-        
+
         tambahBarangKeFile(barangToko, clear=True)
         keMenu("Nama barang telah diubah")
-        
+
     elif opsiUser == '2':
         print()
         while True:
@@ -153,15 +151,15 @@ def editBarangToko():
             else:
                 print("Barang Tidak Ada")
                 print()
-                
+
         while True:
             newJumlahBarang = input("Masukkan Jumlah Baru untuk Barang: ")
             if newJumlahBarang != '':
                 break
-            barangToko.update({barangDiedit: newJumlahBarang})
-            tambahBarangKeFile(barangToko, clear=True)
-            keMenu("Jumlah barang telah diubah")
-            
+        barangToko.update({barangDiedit: newJumlahBarang})
+        tambahBarangKeFile(barangToko, clear=True)
+        keMenu("Jumlah barang telah diubah")
+
 def hapusBarangToko():
     print("UD.FEDY JAYA")
     print("Hapus Barang Toko")
@@ -175,11 +173,11 @@ def hapusBarangToko():
         else:
             print("Barang Tidak Ada")
             print()
-            
+
     while True:
-        konfirmasi = input("KONFIRMASI: Apakah Anda Yakin Ingin Menghapus Barang ini?(y/n): ").lower()
-        if konfirmasi in ['y', 'n']:
-            break
+       konfirmasi = input("KONFIRMASI: Apakah Anda Yakin Ingin Menghapus Barang ini?(y/n): ").lower()
+       if konfirmasi in ['y', 'n']:
+           break
     if konfirmasi == 'y':
         del barangToko[barangDihapus]
         tambahBarangKeFile(barangToko, clear=True)
@@ -204,16 +202,16 @@ def tambahBarangKeFile(barangUser: dict, clear: bool): #mendefinisikan tambah ba
         for barang in barangToko:
             file.write(f"{barang}: {barangToko[barang]}")
             file.write('\n')
-        
+
 def getbarangToko():
     barangToko = {}
     with open('dbarang-udfedyjaya.txt', 'r') as file:
         for line in file:
-            line: line.replace('\n', '').split(':')
+            line = line.replace('\n','').split(':')
             namaBarang, jumlahBarang = line[0], line[1].strip()
             barangToko.update({namaBarang: int(jumlahBarang)})
-          
-    return
+
+    return barangToko
 
 def keMenu(pesan):
     while True:
@@ -221,22 +219,7 @@ def keMenu(pesan):
         kembali = input(f"{pesan}. Tekan (M) untuk kembali ke Menu: ").lower() if pesan != None else input("Tekan (M) untuk kembali ke Menu: ").lower()
         if kembali == 'm':
             main()
-            break       
+            break
+
 
 main()
-
-    
-    
-    
-        
-        
-                        
-        
-            
-    
-                    
-                
-                        
-                
-        
-    
