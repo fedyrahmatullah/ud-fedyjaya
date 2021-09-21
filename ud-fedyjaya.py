@@ -22,6 +22,7 @@ def main():
             lihatBarang()
             break
 
+# Tambah barang 
 def tambahBarang():
     clear()
     print("UD.FEDY JAYA")
@@ -73,6 +74,7 @@ def tambahBarang():
                 break
         tambahBarangKeFile({barangToko: int(jml_Barang)}, clear=False)
         keMenu("Barang telah ditambahkan")
+        
     elif opsiUser == '3':
         print()
         while True:
